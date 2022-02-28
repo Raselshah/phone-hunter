@@ -1,5 +1,5 @@
 const allPhoneAdd = document.getElementById("phone-add");
-
+// load phones function
 const searchButton = () => {
   const inputField = document.getElementById("input-field");
   const searchInput = inputField.value.toLowerCase();
@@ -11,6 +11,7 @@ const searchButton = () => {
   inputField.value = "";
 };
 
+// show phone value function
 const showPhone = (phones) => {
   for (const phone of phones) {
     // console.log(phone);
@@ -36,4 +37,16 @@ const showPhone = (phones) => {
 
     allPhoneAdd.appendChild(div);
   }
+};
+
+// show phone details function
+const phoneDetails = (info) => {
+  //   console.log(info);
+  fetch(`https://openapi.programming-hero.com/api/phone/${info}`)
+    .then((res) => res.json())
+    .then((data) => showPhoneDetails(data.data));
+};
+
+const showPhoneDetails = (phoneInfo) => {
+  console.log(phoneInfo);
 };
