@@ -62,17 +62,15 @@ const showPhoneDetails = (phoneInfo) => {
   const phoneSensors = phoneInfo.mainFeatures.sensors;
   let allSensors = 0;
   for (const phoneSensor of phoneSensors) {
-    console.log(phoneSensor);
-    allSensors = allSensors + phoneSensor;
+    allSensors += phoneSensor;
   }
   //   console.log(phoneInfo.mainFeatures);
   const div = document.createElement("div");
   div.innerHTML = `
-    <h4></h4>
-
     <div class="card">
     <img class="mx-auto" width="200" height="200" src="${phoneInfo.image}" alt="...">
     <div class="card-body">
+      <h5 class="card-title text-center">${phoneInfo.name}</h5>
       <h5 class="card-title text-center">memory : ${phoneInfo.mainFeatures.memory}</h5>
       <h5 class="card-title text-center">Storage : ${phoneInfo.mainFeatures.storage}</h5>
       <h5 class="card-title text-center">body : ${phoneInfo.mainFeatures.displaySize}</h5>
