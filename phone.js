@@ -11,16 +11,23 @@ const searchButton = () => {
     .then((res) => res.json())
     .then((data) => showPhone(data.data));
 
+  // spinner added
+  document.getElementById("spinner").style.display = "block";
   inputField.value = "";
 };
 
 // show phone value function
 const showPhone = (phones) => {
+  // spinner remove
+  document.getElementById("spinner").style.display = "none";
   // user input checking
   if (phones <= 0) {
-    alert("error");
+    document.getElementById("input-field").style.border = "1px solid red";
+    document.getElementById("error-message").style.display = "block";
     return;
   }
+  document.getElementById("input-field").style.border = "1px solid #ced4da";
+  document.getElementById("error-message").style.display = "none";
   //   user input valid then this code running
   for (const phone of phones) {
     // console.log(phone);
@@ -71,18 +78,18 @@ const showPhoneDetails = (phoneInfo) => {
     <img class="mx-auto" width="200" height="200" src="${phoneInfo.image}" alt="...">
     <div class="card-body">
       <h5 class="card-title text-center">${phoneInfo.name}</h5>
-      <h5 class="card-title text-center">memory : ${phoneInfo.mainFeatures.memory}</h5>
+      <h5 class="card-title text-center">Memory : ${phoneInfo.mainFeatures.memory}</h5>
       <h5 class="card-title text-center">Storage : ${phoneInfo.mainFeatures.storage}</h5>
-      <h5 class="card-title text-center">body : ${phoneInfo.mainFeatures.displaySize}</h5>
+      <h5 class="card-title text-center">Body : ${phoneInfo.mainFeatures.displaySize}</h5>
       <h5 class="card-title text-center">Storage : ${phoneInfo.mainFeatures.chipSet}</h5>
-      <h5 class="card-title text-center">display : ${phoneInfo.mainFeatures.displaySize}</h5>
-      <p class="card-text text-center">bluetooth : ${phoneInfo.others.Bluetooth}</p>
+      <h5 class="card-title text-center">Display : ${phoneInfo.mainFeatures.displaySize}</h5>
+      <p class="card-text text-center">Bluetooth : ${phoneInfo.others.Bluetooth}</p>
       <p class="card-text text-center">Gps : ${phoneInfo.others.GPS}</p>
       <p class="card-text text-center">NFC : ${phoneInfo.others.NFC}</p>
       <p class="card-text text-center">Radio : ${phoneInfo.others.Radio}</p>
       <p class="card-text text-center">USB : ${phoneInfo.others.USB}</p>
       <p class="card-text text-center">WLAN : ${phoneInfo.others.WLAN}</p>
-      <p class ="text-center">sensors : ${allSensors}</p>
+      <p class ="text-center">Sensors : ${allSensors}</p>
       <p class="card-text text-center"><small class="text-muted">${phoneInfo.releaseDate}</small></p>
     </div>
   </div>
