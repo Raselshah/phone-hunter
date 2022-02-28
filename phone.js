@@ -59,8 +59,13 @@ const phoneDetails = (info) => {
 const showPhoneDetails = (phoneInfo) => {
   // clear display
   allPhoneAdd.textContent = "";
-
-  console.log(phoneInfo.mainFeatures);
+  const phoneSensors = phoneInfo.mainFeatures.sensors;
+  let allSensors = 0;
+  for (const phoneSensor of phoneSensors) {
+    console.log(phoneSensor);
+    allSensors = allSensors + phoneSensor;
+  }
+  //   console.log(phoneInfo.mainFeatures);
   const div = document.createElement("div");
   div.innerHTML = `
     <h4></h4>
@@ -68,30 +73,21 @@ const showPhoneDetails = (phoneInfo) => {
     <div class="card">
     <img class="mx-auto" width="200" height="200" src="${phoneInfo.image}" alt="...">
     <div class="card-body">
-      <h5 class="card-title">memory : ${phoneInfo.mainFeatures.memory}</h5>
-      <h5 class="card-title">Storage : ${phoneInfo.mainFeatures.storage}</h5>
-      <h5 class="card-title">body : ${phoneInfo.mainFeatures.displaySize}</h5>
-      <h5 class="card-title">Storage : ${phoneInfo.mainFeatures.chipSet}</h5>
-      <h5 class="card-title">display : ${phoneInfo.mainFeatures.displaySize}</h5>
-      <p class="card-text">bluetooth : ${phoneInfo.others.Bluetooth}</p>
-      <p class="card-text">Gps : ${phoneInfo.others.GPS}</p>
-      <p class="card-text">NFC : ${phoneInfo.others.NFC}</p>
-      <p class="card-text">Radio : ${phoneInfo.others.Radio}</p>
-      <p class="card-text">USB : ${phoneInfo.others.USB}</p>
-      <p class="card-text">WLAN : ${phoneInfo.others.WLAN}</p>
-      <p class="card-text"><small class="text-muted">${phoneInfo.releaseDate}</small></p>
+      <h5 class="card-title text-center">memory : ${phoneInfo.mainFeatures.memory}</h5>
+      <h5 class="card-title text-center">Storage : ${phoneInfo.mainFeatures.storage}</h5>
+      <h5 class="card-title text-center">body : ${phoneInfo.mainFeatures.displaySize}</h5>
+      <h5 class="card-title text-center">Storage : ${phoneInfo.mainFeatures.chipSet}</h5>
+      <h5 class="card-title text-center">display : ${phoneInfo.mainFeatures.displaySize}</h5>
+      <p class="card-text text-center">bluetooth : ${phoneInfo.others.Bluetooth}</p>
+      <p class="card-text text-center">Gps : ${phoneInfo.others.GPS}</p>
+      <p class="card-text text-center">NFC : ${phoneInfo.others.NFC}</p>
+      <p class="card-text text-center">Radio : ${phoneInfo.others.Radio}</p>
+      <p class="card-text text-center">USB : ${phoneInfo.others.USB}</p>
+      <p class="card-text text-center">WLAN : ${phoneInfo.others.WLAN}</p>
+      <p class ="text-center">sensors : ${allSensors}</p>
+      <p class="card-text text-center"><small class="text-muted">${phoneInfo.releaseDate}</small></p>
     </div>
   </div>
   `;
   allPhoneAdd.appendChild(div);
-
-  const p = phoneInfo.mainFeatures.sensors;
-  for (const i of p) {
-    console.log(i);
-    const div = document.createElement("div");
-    div.innerHTML = `
-        <p>${i}</p>
-    `;
-    allPhoneAdd.appendChild(div);
-  }
 };
