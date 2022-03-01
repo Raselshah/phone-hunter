@@ -44,11 +44,15 @@ const showPhone = (phones) => {
     
         <div class="col">
             <div class="card h-100">
-                <img class="mx-auto" width="200" height="200" src="${phone.image}" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${phone.phone_name}</h5>
-                    <p class="card-text">Brand : ${phone.brand}</p>
-                    <button onclick="phoneDetails('${phone.slug}')" type="button" class="btn btn-outline-info">See Phone Details</button>
+                <div class="d-flex justify-content-center flex-column align-content-center box-design  p-3">
+                    <img class="mx-auto" height="200" src="${phone.image}" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${phone.phone_name}</h5>
+                        <p class="card-text text-center">Brand : ${phone.brand}</p>
+                        <div class="text-center mx-auto">
+                        <button onclick="phoneDetails('${phone.slug}')" type="button" class="btn btn-outline-info">See Phone Details</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,7 +82,7 @@ const showPhoneDetails = (phoneInfo) => {
   //   console.log(phoneInfo.mainFeatures);
   const div = document.createElement("div");
   div.innerHTML = `
-    <div class="card">
+    <div class="card p-3">
     <img class="mx-auto" width="200" height="200" src="${
       phoneInfo.image
     }" alt="...">
