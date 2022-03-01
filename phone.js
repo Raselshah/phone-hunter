@@ -1,4 +1,5 @@
 const allPhoneAdd = document.getElementById("phone-add");
+
 // load phones function
 const searchButton = () => {
   // clear display
@@ -29,13 +30,16 @@ const showPhone = (phones) => {
   document.getElementById("input-field").style.border = "1px solid #ced4da";
   document.getElementById("error-message").style.display = "none";
   //   user input valid then this code running
-  for (const phone of phones) {
+
+  const onePageTotalPhone = phones.slice(0, 20);
+  for (const phone of onePageTotalPhone) {
     // console.log(phone);
 
     const div = document.createElement("div");
     div.classList.add("col-lg-3");
     div.classList.add("col-md-6");
     div.classList.add("mb-4");
+
     div.innerHTML = `
     
         <div class="col">
@@ -75,22 +79,51 @@ const showPhoneDetails = (phoneInfo) => {
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="card">
-    <img class="mx-auto" width="200" height="200" src="${phoneInfo.image}" alt="...">
+    <img class="mx-auto" width="200" height="200" src="${
+      phoneInfo.image
+    }" alt="...">
     <div class="card-body">
       <h5 class="card-title text-center">${phoneInfo.name}</h5>
-      <h5 class="card-title text-center">Memory : ${phoneInfo.mainFeatures.memory}</h5>
-      <h5 class="card-title text-center">Storage : ${phoneInfo.mainFeatures.storage}</h5>
-      <h5 class="card-title text-center">Body : ${phoneInfo.mainFeatures.displaySize}</h5>
-      <h5 class="card-title text-center">Storage : ${phoneInfo.mainFeatures.chipSet}</h5>
-      <h5 class="card-title text-center">Display : ${phoneInfo.mainFeatures.displaySize}</h5>
-      <p class="card-text text-center">Bluetooth : ${phoneInfo.others.Bluetooth}</p>
-      <p class="card-text text-center">Gps : ${phoneInfo.others.GPS}</p>
-      <p class="card-text text-center">NFC : ${phoneInfo.others.NFC}</p>
-      <p class="card-text text-center">Radio : ${phoneInfo.others.Radio}</p>
-      <p class="card-text text-center">USB : ${phoneInfo.others.USB}</p>
-      <p class="card-text text-center">WLAN : ${phoneInfo.others.WLAN}</p>
+      <h5 class="card-title text-center">Memory : ${
+        phoneInfo.mainFeatures.memory
+          ? phoneInfo.mainFeatures.memory
+          : "memory not include"
+      }</h5>
+      <h5 class="card-title text-center">Storage : ${
+        phoneInfo.mainFeatures.storage
+      }</h5>
+      <h5 class="card-title text-center">Processor : ${
+        phoneInfo.mainFeatures.chipSet
+          ? phoneInfo.mainFeatures.chipSet
+          : "processor is not found"
+      }</h5>
+      <h5 class="card-title text-center">Display : ${
+        phoneInfo.mainFeatures.displaySize
+      }</h5>
+      <p class="card-text text-center">Bluetooth : ${
+        phoneInfo.others.Bluetooth
+          ? phoneInfo.others.Bluetooth
+          : "bluetooth not found"
+      }</p>
+      <p class="card-text text-center">Gps : ${
+        phoneInfo.others.GPS ? phoneInfo.others.GPS : "Gps is not build in"
+      }</p>
+      <p class="card-text text-center">NFC : ${
+        phoneInfo.others.NFC ? phoneInfo.others.NFC : "NFC not found"
+      }</p>
+      <p class="card-text text-center">Radio : ${
+        phoneInfo.others.Radio ? phoneInfo.others.Radio : "Radio not build in"
+      }</p>
+      <p class="card-text text-center">USB : ${
+        phoneInfo.others.USB ? phoneInfo.others.USB : "USB not supported"
+      }</p>
+      <p class="card-text text-center">WLAN : ${
+        phoneInfo.others.WLAN ? phoneInfo.others.WLAN : "WLAN is not found"
+      }</p>
       <p class ="text-center">Sensors : ${allSensors}</p>
-      <p class="card-text text-center"><small class="text-muted">${phoneInfo.releaseDate}</small></p>
+      <p class="card-text text-center"><small class="text-muted">${
+        phoneInfo.releaseDate ? phoneInfo.releaseDate : "not released yet"
+      }</small></p>
     </div>
   </div>
   `;
