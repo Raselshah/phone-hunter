@@ -5,6 +5,7 @@ const allPhoneAddDetails = document.getElementById("phone-details");
 const searchButton = () => {
   // clear display
   allPhoneAdd.textContent = "";
+  allPhoneAddDetails.textContent = "";
   // phone data load
   const inputField = document.getElementById("input-field");
   const searchInput = inputField.value.toLowerCase();
