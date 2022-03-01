@@ -1,4 +1,5 @@
 const allPhoneAdd = document.getElementById("phone-add");
+const allPhoneAddDetails = document.getElementById("phone-details");
 
 // load phones function
 const searchButton = () => {
@@ -25,12 +26,21 @@ const showPhone = (phones) => {
   if (phones <= 0) {
     document.getElementById("input-field").style.border = "1px solid red";
     document.getElementById("error-message").style.display = "block";
+    allPhoneAddDetails.textContent = "";
+    document.getElementById("counter").style.display = "none";
     return;
   }
+  document.getElementById("counter").style.display = "block";
   document.getElementById("input-field").style.border = "1px solid #ced4da";
   document.getElementById("error-message").style.display = "none";
   //   user input valid then this code running
 
+  // counter added
+  const count = document.getElementById("counter");
+  const counter = phones.length;
+  count.innerText = `Total item found :  ${counter}`;
+
+  // first 20 item showing
   const onePageTotalPhone = phones.slice(0, 20);
   for (const phone of onePageTotalPhone) {
     // console.log(phone);
@@ -73,11 +83,11 @@ const phoneDetails = (info) => {
 
 const showPhoneDetails = (phoneInfo) => {
   // clear display
-  allPhoneAdd.textContent = "";
+  allPhoneAddDetails.textContent = "";
   const phoneSensors = phoneInfo.mainFeatures.sensors;
   let allSensors = 0;
   for (const phoneSensor of phoneSensors) {
-    allSensors += phoneSensor;
+    allSensors = allSensors + phoneSensor + "<br>";
   }
   //   console.log(phoneInfo.mainFeatures);
   const div = document.createElement("div");
@@ -131,5 +141,5 @@ const showPhoneDetails = (phoneInfo) => {
     </div>
   </div>
   `;
-  allPhoneAdd.appendChild(div);
+  allPhoneAddDetails.appendChild(div);
 };
