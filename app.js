@@ -143,4 +143,5 @@ const showPhoneDetails = (phoneInfo) => {
   </div>
   `;
   allPhoneAddDetails.appendChild(div);
+  window.scrollTo(0, 200);
 };
